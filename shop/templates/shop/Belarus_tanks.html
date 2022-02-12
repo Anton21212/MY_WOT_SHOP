@@ -6,10 +6,11 @@
     {{ tank.discription }}
     {{ tank.price }}
     <img src="{{ tank.img.url }}">
+    <form action="{% url 'cart:cart_add' tank.id %}" method="post">
+        {{ cart_product_form }}
+        {% csrf_token %}
+        <input type="submit" value="В корзину">
+    </form>
 {% endfor %}
-<form action="{% url 'cart:cart_add' tanks.id %}" method="post">
-    {{ cart_product_form }}
-    {% csrf_token %}
-    <input type="submit" value="В корзину">
-</form>
+
 {% endblock content %}
