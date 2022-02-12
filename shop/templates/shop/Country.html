@@ -1,0 +1,14 @@
+
+{% block title %} Shop Details {% endblock %}
+
+
+{% for country in country %}
+
+    <a href="{% url 'category_shop:country_tanks' country.title%}">
+        {{ country.title }}
+        <img src="{{ country.img.url }}">
+    </a>
+{% endfor %}
+
+
+

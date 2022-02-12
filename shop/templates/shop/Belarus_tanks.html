@@ -1,0 +1,15 @@
+{% block content %}
+
+{% for tank in tanks %}
+    {{ tank.title }}
+    {{ tank.category }}
+    {{ tank.discription }}
+    {{ tank.price }}
+    <img src="{{ tank.img.url }}">
+{% endfor %}
+<form action="{% url 'cart:cart_add' tanks.id %}" method="post">
+    {{ cart_product_form }}
+    {% csrf_token %}
+    <input type="submit" value="В корзину">
+</form>
+{% endblock content %}

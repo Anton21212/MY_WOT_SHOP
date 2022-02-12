@@ -1,0 +1,21 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title %}Главная страница 2{% endblock %}
+{% block user  %} {{ user.username }} {% endblock %}
+{% block header_nav %}
+<a class="nav__link" href="{% url 'category_shop:shop' %}">Shop</a>
+<a class="nav__link" href="#">Support</a>
+<a class="nav__link" href="#">About</a>
+{% endblock header_nav %}
+
+
+{% block content %}
+<div class="intro">
+
+    <div class="conteiner">
+        <h1 class="intro_title">Welcome to Tank Shop</h1>
+    </div>
+
+</div>
+
+{% endblock %}

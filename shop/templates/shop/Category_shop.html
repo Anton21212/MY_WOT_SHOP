@@ -1,0 +1,27 @@
+{% extends 'main/base.html' %}
+{% block body %}
+{% load static %}
+<body class="body_2">
+{% block content %}
+
+
+<div class="category_all_shop">
+        <div class="category_shops">
+            <a href="{% url 'category_shop:country' %}">
+                <span class="title_category"> Tanks </span>
+                <img src="{% static '/main/img/category-tanks_img.png' %}">
+            </a>
+            <p class="discriptions_category">ererer</p>
+
+            <a href="{% url 'category_shop:fuel' %}">
+                <span class="title_category"> Fuel </span>
+                <img src="{% static '/main/img/Gold.png' %}">
+            </a>
+            <p class="discriptions_category">erewrerer</p>
+        </div>
+
+</div>
+</body>
+{% endblock content %}
+{% endblock body %}
+

@@ -1,0 +1,9 @@
+{% block content %}
+{% for fuel in fuels %}
+    {{ fuel.title }}
+    {{ fuel.category }}
+    {{ fuel.discription }}
+    {{ fuel.price }}
+    <img src="{{ fuel.img.url }}">
+{% endfor %}
+{% endblock %}

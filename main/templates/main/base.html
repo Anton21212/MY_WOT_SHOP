@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="{% static 'main/css/registr.css' %}">
+    <title>{% block title %}Регистрация{% endblock %}</title>
+</head>
+
+<header class="header">
+    <div class="conteiner">
+        <div class="header_inner">
+            <div class="header_logo"><img src="{% static 'main/img/logo2.png' %}" alt="" height="100px" width="100px"></div>
+
+            <div class="nav">
+                {% block header_nav %}
+                <a class="nav__link" href="#">Support</a>
+                <a class="nav__link" href="#">About</a>
+                {% endblock header_nav %}
+            </div>
+
+            <div class="user">{% block user%}Вход не выполнен{%endblock%}</div>
+        </div>
+    </div>
+</header>
+
+{% block body %}
+<body class="body_1">
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+</body>
+{% endblock %}
+</html>
+
