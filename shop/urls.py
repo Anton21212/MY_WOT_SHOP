@@ -13,6 +13,6 @@ urlpatterns = [
 
     path('country/', views.country_all, name='country'),
 
-    path('/<slug:country>/tanks', views.country_tanks, name='country_tanks'),
+    path('<country>/tanks', views.country_tanks, name='country_tanks'),
 
 ]

@@ -31,11 +31,12 @@ urlpatterns = [
     path('registration/', views.register, name='registration'),
 
     # Подключение шопа категории
-    path('category_shop/', include('shop.urls', namespace='category_shop')),
+    path('category_shop/', include('shop.urls')),
 
     # Подключение корзины
-    path('cart/', include('cart.urls', namespace='cart'))
+    path('cart/', include('cart.urls')),
 
+    path('orders/', include('orders.urls')),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + \

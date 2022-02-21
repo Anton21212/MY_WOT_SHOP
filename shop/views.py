@@ -29,8 +29,11 @@ def country_tanks (request,country):
 
     tanks = Tanks.objects.filter(country__title__icontains=country)
     cart_product_form = CartAddProductForm()
+    category = str(tanks.model._meta.object_name)
     return render(request, 'shop/Belarus_tanks.html', {'tanks': tanks,
-                                                       'cart_product_form':cart_product_form})
+                                                       'cart_product_form':cart_product_form,
+                                                       'category': category})
+
 
 
 
@@ -39,24 +42,13 @@ def country_tanks (request,country):
 def all_fuels(request):
 
     fuels = Fuel.objects.all()
-
-    return render(request, 'shop/Fuel.html', {'fuels':fuels})
-
-
-
-
-# Может когда-то использую
+    cart_product_form = CartAddProductForm()
+    category = str(fuels.model._meta.object_name)
+    return render(request, 'shop/Fuel.html', {'fuels':fuels,
+                                              'cart_product_form':cart_product_form,
+                                              'category': category})
 
 
 
-# def country_tanks_Bel(request,id):
-#     context = {}
-#     context["Belarus"] = Tanks.objects.get(id=id)
-#
-#     return render(request, 'shop/Belarus_tanks.html', context)
 
-# def country_tanks_Bel(request):
-#
-#     tanks = Tanks.objects.filter(country__title__icontains="Беларусь")
-#
-#     return render(request, 'shop/Belarus_tanks.html', {'tanks': tanks})
+

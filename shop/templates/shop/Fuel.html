@@ -5,5 +5,12 @@
     {{ fuel.discription }}
     {{ fuel.price }}
     <img src="{{ fuel.img.url }}">
+    <form action="{% url 'cart:cart_add' category fuel.id %}" method="post">
+        {{ cart_product_form }}
+        {% csrf_token %}
+        <input type="submit" value="В корзину">
+    </form>
+    {{ get_total_price }}
 {% endfor %}
 {% endblock %}
+

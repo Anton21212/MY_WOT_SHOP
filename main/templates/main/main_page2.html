@@ -2,6 +2,7 @@
 {% load static %}
 {% block title %}Главная страница 2{% endblock %}
 {% block user  %} {{ user.username }} {% endblock %}
+{% block cart %} <a href="{% url 'cart:cart_detail' %}">Корзина</a> {% endblock%}
 {% block header_nav %}
 <a class="nav__link" href="{% url 'category_shop:shop' %}">Shop</a>
 <a class="nav__link" href="#">Support</a>
