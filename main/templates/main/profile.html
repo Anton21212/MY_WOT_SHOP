@@ -1,0 +1,26 @@
+{% extends "main/base.html" %}
+{% block user  %} {{ user.username }} {% endblock %}
+{% block body %}
+{% load static %}
+<body class="body_2">
+{% block content %}
+    <div class="my_profile">
+        {% for prof in  my_profile %}
+                <img src="{{ prof.get_photo_url }}" class="img-responsive thumbnail " alt="img" width="300px" align="left" height="300px">
+                <div class="prof">
+                    {{ prof.user }}
+                    {{ prof.firstname }}
+                    {{ prof.lastname}} <br>
+                    <hr>
+                    {{ prof.email }} <br>
+                    <hr>
+                    {{ prof.country }} <br>
+                    <hr>
+                    {{ prof.city }}
+                </div>
+        {% endfor %}
+    </div>
+    <a class="btn_edit" href="{% url 'edit_profile' %}">Редактировать</a>
+{% endblock %}
+</body>
+{% endblock body %}

@@ -1,6 +1,6 @@
 .header {
     position: fixed;
-    background: rgba(39,39,43,.85);
+    background: rgba(39, 39, 43, .85);
     top: 0;
     left: 0;
     right: 0;
@@ -10,10 +10,54 @@
 }
 
 
-.header_inner{
+.header_inner {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+
+/*autorazation */
+.login {
+
+
+    text-align: center;
+    color: white;
+    font-size: 20px;
+    max-width: fit-content;
+    margin: 0 auto;
+    box-shadow: 0 0 0 3px #fff inset;
+    border: black;
+    display: table;
+    margin-top: 200px;
+    position: relative;
+    width: 100%;
+    background: cadetblue;
+    padding: 34px;
+}
+
+/*registration */
+.register {
+    color: white;
+    text-align: center;
+    font-size: 20px;
+    max-width: fit-content;
+    margin: 0 auto;
+    box-shadow: 0 0 0 3px #fff inset;
+    border: black;
+    display: table;
+    margin-top: 200px;
+    position: relative;
+    width: 100%;
+    background: cadetblue;
+    padding: 34px;
+
+}
+
+.register .registerform {
+    max-width: 200px;
+    text-align: center;
+    margin: 0 auto;
 }
 
 /*Navigator*/
@@ -25,7 +69,7 @@
     text-transform: uppercase;
     color: #fff;
     text-decoration: none;
-    transition: color .2s linear ;
+    transition: color .2s linear;
     margin: 10px;
 }
 
@@ -48,10 +92,11 @@
     background: url("../img/Bagraund.png") no-repeat;
     background-size: cover;
 }
-.body_2{
+
+.body_2 {
     padding: 0px;
     margin: 0px;
-    background-color:#1c1b16;
+    background-color: #1c1b16;
 }
 
 .conteiner {
@@ -60,15 +105,16 @@
     margin: 0 auto;
 }
 
- /*Intro */
+/*Intro */
 
 
-.intro{
+.intro {
     width: 100%;
     height: 100%;
 }
 
-.intro_title{
+.intro_title {
+    padding-top: 50px;
     color: white;
     margin-top: 100px;
     font-size: 100px;
@@ -78,14 +124,14 @@
 }
 
 /*Button*/
-.nav_logout_reg{
+.nav_logout_reg {
     width: 100%;
     max-width: 550px;
     margin: 0 auto;
 
 }
 
-.nav_logout{
+.nav_logout {
     display: flex;
     justify-content: space-between;
 }
@@ -103,9 +149,241 @@
     min-width: 160px;
     text-align: center;
     background: cadetblue;
-    transition: color .2s linear ;
+    transition: color .2s linear;
 }
 
 .btn:hover {
     color: #fce38a;
+}
+
+
+/*Category_shop*/
+.category_shops {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 200px;
+}
+
+.discriptions_category {
+    color: white;
+    text-align: center;
+    font-size: 25px;
+}
+
+
+/*Country*/
+.all_country {
+    display: flex;
+    justify-content: space-around;
+}
+
+.title_country {
+    font-size: 40px;
+
+    text-align: center;
+    color: white;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* Search */
+.search {
+    display: block;
+    text-align: center;
+    font-size: 20px;
+    color: white;
+    padding-top: 150px;
+}
+
+
+/*Belarus_tanks*/
+.tanks {
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    margin-top: 150px;
+}
+
+li {
+    list-style: none;
+}
+
+.tank {
+    font-size: 24px;
+    color: white;
+    text-align: center;
+}
+
+/*Fuels*/
+.fuels {
+    margin-top: 150px;
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+}
+
+.fuel {
+    font-size: 24px;
+    color: white;
+    text-align: center;
+}
+
+/*info*/
+.search_successfully {
+    margin-top: 120px;
+    text-align: center;
+    color: white;
+    font-size: 25px;
+}
+
+.result_search {
+    display: grid;
+    grid-template-columns: 33%33%33%;
+    font-size: 24px;
+    color: white;
+    text-align: center;
+}
+.Search_again_1{
+   text-align: center;
+    font-size: 25px;
+    padding: 10px;
+    margin: 0 auto;
+    background: cadetblue;
+    border: 4px solid white;
+    border-radius: 10px;
+    max-width: 140px;
+
+}
+a{
+    color: white;
+}
+
+/*Cart*/
+table {
+    width: 300px; /* Ширина таблицы */
+    border: 4px solid white; /* Рамка вокруг таблицы */
+    margin: auto; /* Выравниваем таблицу по центру окна  */
+    padding: 20px;
+   }
+td {
+    text-align: center; /* Выравниваем текст по центру ячейки */
+   }
+.cart_title{
+    text-align: center;
+    margin-top: 150px;
+    color: white;
+}
+
+
+.cart{
+    margin-top: 150px;
+    color: cadetblue;
+    font-size: 30px;
+    text-align: center;
+}
+
+.cart th{
+    padding: 20px;
+}
+
+.Checkout{
+    text-align: center;
+    font-size: 25px;
+    padding: 10px;
+    margin: 0 auto;
+    background: cadetblue;
+    border: 4px solid white;
+    border-radius: 10px;
+    max-width: 140px;
+}
+
+
+.user{
+    font-size: 30px;
+
+}
+
+/*Orders*/
+.order_form{
+    color: white;
+    text-align: center;
+    font-size: 30px;
+    max-width: fit-content;
+    margin: 0 auto;
+    box-shadow: 0 0 0 3px #fff inset;
+    border: black;
+    display: table;
+    margin-top: 200px;
+    position: relative;
+    width: 100%;
+    background: cadetblue;
+    padding: 34px;
+
+}
+/*payment*/
+.payment{
+    color: white;
+    text-align: center;
+    font-size: 20px;
+    max-width: fit-content;
+    margin: 0 auto;
+    box-shadow: 0 0 0 3px #fff inset;
+    border: black;
+    display: table;
+    margin-top: 200px;
+    position: relative;
+    width: 100%;
+    background: cadetblue;
+    padding: 34px;
+}
+.qiwi_payment{
+    color: white;
+    text-align: center;
+    font-size: 20px;
+    max-width: fit-content;
+    margin: 0 auto;
+    box-shadow: 0 0 0 3px #fff inset;
+    border: black;
+    display: table;
+    position: relative;
+    width: 100%;
+    background: cadetblue;
+    padding: 49px;
+}
+
+/*Edit*/
+.edit{
+    color: white;
+    text-align: center;
+    font-size: 20px;
+    max-width: fit-content;
+    margin: 0 auto;
+    box-shadow: 0 0 0 3px #fff inset;
+    border: black;
+    display: table;
+    margin-top: 200px;
+    position: relative;
+    width: 100%;
+    background: cadetblue;
+    padding: 34px;
+}
+/*Profile*/
+.my_profile{
+    display: flex;
+    margin-top: 200px;
+    color: white;
+    font-size: 25px;
+    max-width: fit-content;
+}
+.btn_edit{
+    color: white;
+    text-align: center;
+    font-size: 20px;
+    box-shadow: 0 0 0 3px #fff inset;
+    border: black;
+    display: table;
+
+    position: relative;
+
+    padding: 15px 88px 17px;
 }

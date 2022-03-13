@@ -1,37 +1,44 @@
 from django.shortcuts import render, get_object_or_404
 
-from cart.cart import Cart, CATEGORY_MAPPING
-from .forms import OrderCreateForm
-from .models import OrderItem
+from cart.cart import Cart
 
+from orders.forms import OrderForm
+from orders.models import OrderItem
 
+from shop.models import Fuel, Tanks
 
-def order_create(request):
+CATEGORY_MAPPING = {
+    "Fuel": Fuel,
+    "Tanks": Tanks
+}
+
+def order(request):
     cart = Cart(request)
-    print("erewr", cart)
-    if request.method == 'POST':
-        form = OrderCreateForm(request.POST)
-        print("form", form)
+    error = ''
+    if request.method == "POST":
+        form = OrderForm(request.POST)
         if form.is_valid():
             order = form.save()
-            print("order", order)
             for item in cart:
-                print("item_22", item)
-
                 OrderItem.objects.create(order=order,
-                                         product=item['category'],
-                                         price=item['price']
-                                         )
-                print("erere",order)
-            # очистка корзины
+                                         product_tanks=item['title'],
+                                         price=item['price'],
+                                         quantity=item['quantity'])
             cart.clear()
-            return render(request, 'orders/qiwi.html',
-                          {'order': order})
-    else:
-        form = OrderCreateForm
-    return render(request, 'orders/create.html',
-                  {'cart': cart, 'form': form})
+            form.save()
+            return render(request, 'orders/payment.html', {'order': order})
+        else:
+            error = 'Форма не верно заполнена'
+
+    form = OrderForm()
+
+    data = {
+        'form': form,
+        'error': error
+    }
+
+    return render(request, 'orders/order.html', data)
 
 
-def qiwi(request):
-    return render(request, 'orders/qiwi.html')
+def payment(request):
+    return render(request, 'orders/payment.html')

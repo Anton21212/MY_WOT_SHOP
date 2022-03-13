@@ -1,14 +1,40 @@
+{% extends "main/base.html" %}
+{% block user  %} <a class="nav__link" href="{% url 'profile' %}"> {{ user.username }} </a> {% endblock %}
+{% load static %}
+{% block header_nav %}
+<a class="nav__link" href="{% url 'category_shop:shop' %}">Shop</a>
+<a class="nav__link" href="#">Support</a>
+<a class="nav__link" href="{% url 'cart:cart_detail' %}">Корзина</a>
+{% endblock header_nav %}
+{% block body %}
+<body class="body_2">
+{% block content %}
 
-{% block title %} Shop Details {% endblock %}
+    <div class="search">
+        <h1>Search for Tanks</h1>
+        <form action="." method="get" >
+            {{ form.as_p }}
+
+           <input type="submit"  value="Search" >
+        </form>
+    </div>
 
 
+<div class="all_country">
 {% for country in country %}
-
-    <a href="{% url 'category_shop:country_tanks' country.title%}">
-        {{ country.title }}
-        <img src="{{ country.img.url }}">
-    </a>
+        <div class="country">
+            <a href="{% url 'category_shop:country_tanks' country.title%}">
+                <div class="title_country">{{ country.title }}</div>
+                <img src="{{ country.img.url }}">
+            </a>
+        </div>
 {% endfor %}
+</div>
+
+
+</body>
+{% endblock content %}
+{% endblock body %}
 
 
 

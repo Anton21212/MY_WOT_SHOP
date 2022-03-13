@@ -1,23 +1,33 @@
-{% extends 'main/base.html' %}
-{% block body %}
+{% extends "main/base.html" %}
 {% load static %}
+{% block title %}Категории товара{% endblock %}
+{% block user  %} <a class="nav__link" href="{% url 'profile' %}"> {{ user.username }} </a> {% endblock %}
+{% block header_nav %}
+<a class="nav__link" href="#">Support</a>
+<a class="nav__link" href="{% url 'cart:cart_detail' %}">Корзина</a>
+{% endblock header_nav %}
+{% block body %}
 <body class="body_2">
 {% block content %}
 
 
+
+
 <div class="category_all_shop">
         <div class="category_shops">
-            <a href="{% url 'category_shop:country' %}">
-                <span class="title_category"> Tanks </span>
-                <img src="{% static '/main/img/category-tanks_img.png' %}">
-            </a>
-            <p class="discriptions_category">ererer</p>
+            <div class="Tanks_category">
+                <a href="{% url 'category_shop:country' %}">
 
-            <a href="{% url 'category_shop:fuel' %}">
-                <span class="title_category"> Fuel </span>
-                <img src="{% static '/main/img/Gold.png' %}">
-            </a>
-            <p class="discriptions_category">erewrerer</p>
+                    <img src="{% static '/main/img/category-tanks_img.png' %}">
+                </a>
+                <div class="discriptions_category">Здесь вы можете купить танк любой нации и любого типа</div>
+            </div>
+            <div class="Fuel_category">
+                <a href="{% url 'category_shop:fuel' %}">
+                    <img src="{% static '/main/img/Fuel.png' %}">
+                </a>
+                <p class="discriptions_category">Здесь вы можете купить топливо для своего танка</p>
+            </div>
         </div>
 
 </div>

@@ -1,0 +1,35 @@
+{% extends "main/base.html" %}
+{% block user  %} <a class="nav__link" href="{% url 'profile' %}"> {{ user.username }} </a> {% endblock %}
+{%  load static %}
+{% block header_nav %}
+<a class="nav__link" href="{% url 'category_shop:shop' %}">Shop</a>
+<a class="nav__link" href="#">Support</a>
+<a class="nav__link" href="{% url 'cart:cart_detail' %}">Корзина</a>
+{% endblock header_nav %}
+{% block body %}
+<body class="body_2">
+{% block content %}
+    <div class="payment">
+        <input type="radio" class="radio-cash" name="order" id="radio-cash" value="cash">Оплата наличными при
+        получении <br>
+        <input type="radio" class="radio-card" name="order" onchange="add()" id="radio-card" value="card">Оплата
+        онлайн <br>
+        <button><a class="btn" href="{% url 'category_shop:shop' %}">Оформить</a></button>
+        <script>
+
+            function add() {
+                label = document.createElement('div');
+                label.className = "qiwi_payment"
+                label.innerHTML = '<button><a class="btn" href = "https://oplata.qiwi.com/form?invoiceUid=288143f9-644a-4e5d-b7a5-5ae4747049dd">Оплатить</a></button>';
+                document.getElementById('radio-card').appendChild(label);
+                document.body.append(label);
+            }
+
+
+        </script>
+    </div>
+{% endblock content %}
+</body>
+{% endblock body %}
+
+

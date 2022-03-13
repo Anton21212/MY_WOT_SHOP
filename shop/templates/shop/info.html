@@ -1,0 +1,40 @@
+{% extends "main/base.html" %}
+{% block user  %} <a class="nav__link" href="{% url 'profile' %}"> {{ user.username }} </a> {% endblock %}
+{% block body %}
+{% load static %}
+<body class="body_2">
+{% block content %}
+    {% if "query" in request.GET %}
+        <div class="search_successfully">
+            <h1>По запросу "{{ cd.query }}"</h1>
+            <h3>Найдено результатов {{ total_results }}</h3>
+        </div>
+            {% for result in results %}
+                <div class="result_search">
+                <ul>
+                     <li>{{ result.title }}</li>
+                     <li><img src="{{ result.img.url }}"></li>
+                     <li>{{ result.category }}</li>
+                     <hr>
+                     <li>{{ result.discription }}</li>
+                     <hr>
+                     <li>price:{{ result.price }}</li>
+
+                </ul>
+                </div>
+            {% empty %}
+                <p>There are no results for your query.</p>
+            {% endfor %}
+            <div class="Search_again_1">
+                <a href=".">Search again</a>
+            </div>
+    {% else %}
+            <h1>Search for posts</h1>
+            <form action="." method="get">
+                {{ form.as_p }}
+                <input type="submit" value="Search">
+            </form>
+    {% endif %}
+</body>
+{% endblock content %}
+{% endblock body %}

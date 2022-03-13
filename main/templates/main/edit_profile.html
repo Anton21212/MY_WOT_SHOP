@@ -1,0 +1,19 @@
+{% extends "main/base.html" %}
+{% block user  %} {{ user.username }} {% endblock %}
+{% block body %}
+{% load static %}
+<body class="body_2">
+{% block content %}
+    <div class="edit">
+    <h1>Edit your account</h1>
+    <p>You can edit your account using the following form:</p>
+    <form action="." method="post" enctype="multipart/form-data">
+        {{ profile_form.as_p }}
+        {% csrf_token %}
+        <p><input type="submit" value="Save changes"></p>
+    </form>
+    </div>
+</body>
+{% endblock %}
+
+{% endblock body %}

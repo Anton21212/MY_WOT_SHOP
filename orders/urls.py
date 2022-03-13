@@ -1,9 +1,10 @@
 from django.urls import path
-from . import views
 
-app_name = "orders"
+from orders import views
+
+app_name = 'orders'
 
 urlpatterns = [
-    path('', views.order_create, name='order_create'),
-    path('qiwi', views.qiwi, name='qiwi')
+    path('', views.order, name='order'),
+    path('payment', views.payment, name='payment')
 ]

@@ -1,15 +1,14 @@
 {% extends 'main/base.html' %}
 {% load static %}
 {% block title %}Главная страница 2{% endblock %}
-{% block user  %} {{ user.username }} {% endblock %}
-{% block cart %} <a href="{% url 'cart:cart_detail' %}">Корзина</a> {% endblock%}
+{% block user  %} <a class="nav__link" href="{% url 'profile' %}"> {{ user.username }} </a> {% endblock %}
 {% block header_nav %}
 <a class="nav__link" href="{% url 'category_shop:shop' %}">Shop</a>
 <a class="nav__link" href="#">Support</a>
-<a class="nav__link" href="#">About</a>
+<a class="nav__link" href="{% url 'cart:cart_detail' %}">Корзина</a>
 {% endblock header_nav %}
 
-
+<a class="btn" href="{% url 'autorization' %}">Sign in</a>
 {% block content %}
 <div class="intro">
 

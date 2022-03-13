@@ -1,0 +1,33 @@
+{% extends "main/base.html" %}
+{% block user  %} <a class="nav__link" href="{% url 'profile' %}"> {{ user.username }} </a> {% endblock %}
+{%  load static %}
+{% block header_nav %}
+<a class="nav__link" href="{% url 'category_shop:shop' %}">Shop</a>
+<a class="nav__link" href="#">Support</a>
+<a class="nav__link" href="{% url 'cart:cart_detail' %}">Корзина</a>
+{% endblock header_nav %}
+{% block title %}Created Order {% endblock %}
+{% block body %}
+<body class="body_2">
+{% block content %}
+    <div class="order_form">
+    <form method="post" action=".">
+        Введите ваши данные: <br>
+        {% csrf_token %}
+        {{ form.first_name }}<br>
+        {{ form.last_name }}<br>
+        {{ form.address }}<br>
+        <span>{{ error }}</span>
+        <span>Ваш заказ на сумму: {{ cart.get_total_price }}</span><br>
+        <input type="submit" value="Оформить"><br>
+
+    </form>
+
+    </div>
+
+{% endblock %}
+</body>
+{% endblock body %}
+
+
+

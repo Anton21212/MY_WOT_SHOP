@@ -1,16 +1,40 @@
+{% extends "main/base.html" %}
+{% block user  %} <a class="nav__link" href="{% url 'profile' %}"> {{ user.username }} </a> {% endblock %}
+{% load static %}
+{% block header_nav %}
+<a class="nav__link" href="{% url 'category_shop:shop' %}">Shop</a>
+<a class="nav__link" href="#">Support</a>
+<a class="nav__link" href="{% url 'cart:cart_detail' %}">Корзина</a>
+{% endblock header_nav %}
+{% block body %}
+<body class="body_2">
 {% block content %}
-{% for fuel in fuels %}
-    {{ fuel.title }}
-    {{ fuel.category }}
-    {{ fuel.discription }}
-    {{ fuel.price }}
-    <img src="{{ fuel.img.url }}">
-    <form action="{% url 'cart:cart_add' category fuel.id %}" method="post">
-        {{ cart_product_form }}
-        {% csrf_token %}
-        <input type="submit" value="В корзину">
-    </form>
-    {{ get_total_price }}
-{% endfor %}
-{% endblock %}
 
+    <div class="fuels">
+        {% for fuel in fuels %}
+            <div class="fuel">
+            <ul>
+                <li>{{ fuel.title }}</li>
+                <li><img src="{{ fuel.img.url }}"></li>
+                подходит для:
+                {% for i in fuel.category.all %}
+                    {{ i.title }}
+                {% endfor %}
+                <hr>
+                <li>{{ fuel.discription }}</li>
+                <hr>
+                <li>price:{{ fuel.price }}</li>
+
+
+                <li><form action="{% url 'cart:cart_add' category fuel.id %}" method="post">
+                    {{ cart_product_form }}
+                    {% csrf_token %}
+                    <input type="submit" value="В корзину">
+                </form></li>
+                <li>{{ get_total_price }}</li>
+            </ul>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock content %}
+{% endblock body %}

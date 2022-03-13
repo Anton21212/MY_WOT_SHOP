@@ -1,14 +1,16 @@
 {% extends 'main/base.html' %}
 
 {% block title %}Авторизация{% endblock %}
-{% block user %} #ВЫТЯНУТЬ ИМЯ БЗЕРА С Б/Д{% endblock %}
+{% block user %} Войдите в систему{% endblock %}
 
 {% block content %}
-    <h1>Log-in</h1>
-    <p>Please, use the following form to log-in:</p>
-    <form action="." method="post">
-        {{ form.as_p }}
-        {% csrf_token %}
-        <p><input type="submit" value="Log-in"></p>
-    </form>
+    <div class="login">
+        <h1>Log-in</h1>
+        <p>Please, Use your account to login:</p>
+        <form action="." method="post">
+            {{ form.as_p }}
+            {% csrf_token %}
+            <p><input type="submit" value="Log-in"></p>
+        </form>
+    </div>
 {% endblock %}

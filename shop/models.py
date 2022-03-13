@@ -1,13 +1,5 @@
 from django.db import models
 
-class Category_Shop(models.Model):
-    title = models.CharField(max_length=100)
-    img = models.ImageField(upload_to='category_image', blank=False)
-    discription = models.TextField(max_length=1000, blank=True)
-
-    def __str__(self):
-        return self.title
-
 
 class Country(models.Model):
     title = models.CharField(max_length=100)
