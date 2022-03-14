@@ -3,7 +3,7 @@
 {% block user %} <a class="nav__link" href="{% url 'profile' %}"> {{ user.username }} </a> {% endblock %}
 {% block header_nav %}
     <a class="nav__link" href="{% url 'category_shop:shop' %}">Shop</a>
-    <a class="nav__link" href="#">Support</a>
+    <a class="nav__link" href="{% url 'support:create' %}">Support</a>
 {% endblock header_nav %}
 {% block body %}
     <body class="body_2">

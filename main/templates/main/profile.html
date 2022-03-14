@@ -6,17 +6,17 @@
 {% block content %}
     <div class="my_profile">
         {% for prof in  my_profile %}
-                <img src="{{ prof.get_photo_url }}" class="img-responsive thumbnail " alt="img" width="300px" align="left" height="300px">
+                <img src="{{ prof.get_photo_url }}" class="img-responsive"  alt="img" width="300px" align="left" height="300px" >
                 <div class="prof">
                     {{ prof.user }}
                     {{ prof.firstname }}
                     {{ prof.lastname}} <br>
                     <hr>
-                    {{ prof.email }} <br>
+                    E-mail: {{ prof.email }} <br>
                     <hr>
-                    {{ prof.country }} <br>
+                    Country: {{ prof.country }} <br>
                     <hr>
-                    {{ prof.city }}
+                    City: {{ prof.city }}
                 </div>
         {% endfor %}
     </div>

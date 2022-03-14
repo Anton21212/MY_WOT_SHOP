@@ -2,9 +2,11 @@ from django import forms
 from django.contrib.auth.models import User
 from .models import Profile
 
-# Регистрация
 
 class UserRegistrationForm(forms.ModelForm):
+    """
+    Регистрация
+    """
     password = forms.CharField(label='Password', widget=forms.PasswordInput)
     password2 = forms.CharField(label='Repeat password', widget=forms.PasswordInput)
 
@@ -23,23 +25,29 @@ class UserRegistrationForm(forms.ModelForm):
         return cd['password2']
 
 
-# Авторизация
 
 class LoginForm(forms.Form):
+    """
+    Авторизация
+    """
     username = forms.CharField()
     password = forms.CharField(widget=forms.PasswordInput)
 
 
 
-
-
 class UserEditForm(forms.ModelForm):
+    """
+    Вывод формы имени юзера
+    """
     class Meta:
         model = User
         fields = ('first_name',)
 
 
 class ProfileEditForm(forms.ModelForm):
+    """
+    Вывод формы юзера
+    """
     class Meta:
         model = Profile
-        fields = ('firstname','lastname','city','country','photo','email')
+        fields = ('firstname', 'lastname', 'city', 'country', 'photo', 'email')

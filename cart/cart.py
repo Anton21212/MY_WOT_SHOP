@@ -11,7 +11,9 @@ CATEGORY_MAPPING = {
 
 
 class Cart:
-
+    """
+    Инициализируем корзину
+    """
     def __init__(self, request):
         self.session = request.session
         cart = self.session.get(settings.CART_SESSION_ID)
@@ -22,10 +24,14 @@ class Cart:
         self.cart = cart
 
     def save(self):
+        "Обновление сессии cart"
         self.session[settings.CART_SESSION_ID] = self.cart
         self.session.modified = True
 
     def add(self, product, quantity=1):
+        """
+        Добавить продукт в корзину или обновить его количество.
+        """
         product_id = str(product.id)
         category_name = str(product._meta.object_name)
         product_price = str(product.price)
@@ -57,6 +63,9 @@ class Cart:
         self.save()
 
     def remove(self, product):
+        """
+        Удаление товара из корзины.
+        """
         product_id = str(product.id)
         category_name = str(product._meta.object_name)
 
@@ -72,17 +81,13 @@ class Cart:
 
 
     def __iter__(self):
-
+        """
+         Перебор элемента в корзине и получение продуктов из базы данных.
+        """
         self.cart["total_price"] = 0
         products = self.cart.get("products")
 
         for product in products:
-            category = CATEGORY_MAPPING.get(product.get("category"))
-            title = product.get("title")
-
-            price = product.get("price")
-
-            image = product.get("image")
 
             self.cart["total_price"] += Decimal(product.get("price"))
             yield product
@@ -101,7 +106,7 @@ class Cart:
         return sum(Decimal(item['price']) * item['quantity'] for item in self.cart.get("products", []))
 
     def clear(self):
-        # удаление корзины из сессии
+        " удаление корзины из сессии"
         del self.session[settings.CART_SESSION_ID]
         self.session.modified = True
 

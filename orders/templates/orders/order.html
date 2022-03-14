@@ -3,7 +3,7 @@
 {%  load static %}
 {% block header_nav %}
 <a class="nav__link" href="{% url 'category_shop:shop' %}">Shop</a>
-<a class="nav__link" href="#">Support</a>
+<a class="nav__link" href="{% url 'support:create' %}">Support</a>
 <a class="nav__link" href="{% url 'cart:cart_detail' %}">Корзина</a>
 {% endblock header_nav %}
 {% block title %}Created Order {% endblock %}

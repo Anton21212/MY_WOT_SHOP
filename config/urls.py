@@ -43,7 +43,7 @@ urlpatterns = [
     # Подключение покупок
     path('orders/', include('orders.urls')),
 
-    #подключение саппорта
+    # подключение саппорта
     path('api/v1/tikets/', include('support.urls')),
 ]
 
