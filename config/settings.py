@@ -42,6 +42,12 @@ INSTALLED_APPS = [
     'shop',
     'cart',
     'orders',
+    'support',
+
+    'drf_multiple_model',
+    'rest_framework',
+    'rest_framework.authtoken',
+    'rest_framework_json_api',
 ]
 
 MIDDLEWARE = [
@@ -143,3 +149,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 LOGOUT_REDIRECT_URL = 'main_page'
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAdminUser',
+        'rest_framework.permissions.AllowAny',
+        'rest_framework.permissions.IsAuthenticated'
+    ),
+}

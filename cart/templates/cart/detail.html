@@ -1,73 +1,73 @@
 {% extends "main/base.html" %}
 {% load static %}
-{% block user  %} <a class="nav__link" href="{% url 'profile' %}"> {{ user.username }} </a> {% endblock %}
+{% block user %} <a class="nav__link" href="{% url 'profile' %}"> {{ user.username }} </a> {% endblock %}
 {% block header_nav %}
-<a class="nav__link" href="{% url 'category_shop:shop' %}">Shop</a>
-<a class="nav__link" href="#">Support</a>
+    <a class="nav__link" href="{% url 'category_shop:shop' %}">Shop</a>
+    <a class="nav__link" href="#">Support</a>
 {% endblock header_nav %}
 {% block body %}
-<body class="body_2">
-<div id="content">
-    {% block content %}
-        <div class="cart_title">
-            <h1>Корзина покупок</h1>
-            <h1>Ваша корзина товаров</h1>
-        </div>
-        <table width="100%" class="cart" align="center">
-            <thead>
-            <tr>
-                <th>Изображение</th>
-                <th>Товар</th>
-                <th>Обновить кол-во</th>
-                <th>Удалить</th>
-                <th>Кол-во</th>
-                <th>Цена за шт</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for product in cart.cart.products %}
+    <body class="body_2">
+    <div id="content">
+        {% block content %}
+            <div class="cart_title">
+                <h1>Корзина покупок</h1>
+                <h1>Ваша корзина товаров</h1>
+            </div>
+            <table width="100%" class="cart" align="center">
+                <thead>
                 <tr>
-                    <td>
-                        <img src="{{ product.image }}" alt=""/>
-                    </td>
-                    <td>{{ product.title }}</td>
-                    <td>
-                        <form action="{% url 'cart:cart_add' product.category product.id %}" method="post">
-                            {{ product.update_quantity_form.quantity }}
-                            {{ product.update_quantity_form.update }}
-                            <input type="submit" value="Обновить">
-                            {% csrf_token %}
-                        </form>
-                    </td>
-                    <td><a href="{% url 'cart:cart_remove' product.category  product.id %}">Удалить</a></td>
-                    <td>
-                        {{ product.quantity }}
-                    </td>
-                    <td>{{ product.price }} </td>
-
+                    <th>Изображение</th>
+                    <th>Товар</th>
+                    <th>Обновить кол-во</th>
+                    <th>Удалить</th>
+                    <th>Кол-во</th>
+                    <th>Цена за шт</th>
                 </tr>
-            {% endfor %}
-            </tbody>
-        </table>
-        <div class="cart">
-                        {% with total_items=cart|length %}
-                            {% if cart|length > 0 %}
-                                Ваша корзина:
-                                <a href="{% url 'cart:cart_detail' %}">
-                                    {{ total_items }} тов. на сумму {{ cart.get_total_price }} руб.
-                                </a>
-                                <div class="Checkout">
-                                    <a href="{% url 'orders:order' %}" class="button">
-                                        Checkout
-                                    </a>
-                                </div>
-                            {% else %}
-                                Корзина пустая
-                            {% endif %}
-                        {% endwith %}
-        </div>
-        -
-    {% endblock %}
-</div>
-</body>
+                </thead>
+                <tbody>
+                {% for product in cart.cart.products %}
+                    <tr>
+                        <td>
+                            <img src="{{ product.image }}" alt=""/>
+                        </td>
+                        <td>{{ product.title }}</td>
+                        <td>
+                            <form action="{% url 'cart:cart_add' product.category product.id %}" method="post">
+                                {{ product.update_quantity_form.quantity }}
+                                {{ product.update_quantity_form.update }}
+                                <input type="submit" value="Обновить">
+                                {% csrf_token %}
+                            </form>
+                        </td>
+                        <td><a href="{% url 'cart:cart_remove' product.category  product.id %}">Удалить</a></td>
+                        <td>
+                            {{ product.quantity }}
+                        </td>
+                        <td>{{ product.price }} </td>
+
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            <div class="cart">
+                {% with total_items=cart|length %}
+                    {% if cart|length > 0 %}
+                        Ваша корзина:
+                        <a href="{% url 'cart:cart_detail' %}">
+                            {{ total_items }} тов. на сумму {{ cart.get_total_price }} руб.
+                        </a>
+                        <div class="Checkout">
+                            <a href="{% url 'orders:order' %}" class="button">
+                                Checkout
+                            </a>
+                        </div>
+                    {% else %}
+                        Корзина пустая
+                    {% endif %}
+                {% endwith %}
+            </div>
+            -
+        {% endblock %}
+    </div>
+    </body>
 {% endblock body %}

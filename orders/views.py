@@ -5,12 +5,9 @@ from cart.cart import Cart
 from orders.forms import OrderForm
 from orders.models import OrderItem
 
-from shop.models import Fuel, Tanks
+from shop.models import  Tanks
 
-CATEGORY_MAPPING = {
-    "Fuel": Fuel,
-    "Tanks": Tanks
-}
+
 
 def order(request):
     cart = Cart(request)
@@ -21,7 +18,7 @@ def order(request):
             order = form.save()
             for item in cart:
                 OrderItem.objects.create(order=order,
-                                         product_tanks=item['title'],
+                                         product_tanks=Tanks.objects.get(pk=item["id"]),
                                          price=item['price'],
                                          quantity=item['quantity'])
             cart.clear()
