@@ -14,5 +14,8 @@
 
 Испульзуются фраемворки - Django и DjangoRestFramework(Для реализации support)
 
+Совсем не много JS
+
 Support построенна на архитектуре REST
+
 
